@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.fgieracki.AppTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.728 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.886 sec

@@ -13,7 +13,7 @@ public class Library {
     Library(int capacity){
         this.isOpen = true;
         this.capacity = capacity;
-        semaphore = new Semaphore(capacity);
+        semaphore = new Semaphore(capacity, true);
     }
 
     public Semaphore semaphore(){

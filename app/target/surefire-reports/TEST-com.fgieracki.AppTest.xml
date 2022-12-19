@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="com.fgieracki.AppTest" time="15.651" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="com.fgieracki.AppTest" time="15.814" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="17.0.5+9-LTS-191"/>
@@ -64,7 +64,7 @@
     <property name="sun.stdout.encoding" value="cp852"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.fgieracki.AppTest" name="queueTest" time="0.028"/>
-  <testcase classname="com.fgieracki.AppTest" name="appTest" time="0.02"/>
-  <testcase classname="com.fgieracki.AppTest" name="initTest" time="15.603"/>
+  <testcase classname="com.fgieracki.AppTest" name="queueTest" time="0.026"/>
+  <testcase classname="com.fgieracki.AppTest" name="appTest" time="0.005"/>
+  <testcase classname="com.fgieracki.AppTest" name="initTest" time="15.783"/>
 </testsuite>

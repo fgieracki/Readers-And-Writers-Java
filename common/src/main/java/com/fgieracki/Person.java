@@ -42,10 +42,11 @@ abstract class Person extends Thread {
         try {
             library.removePerson(this);
             library.semaphore().release(getRequiredSlots());
-            System.out.println(ANSI_RED + this.getName() + " exited the library" + ANSI_RESET);
             int sleepTime = (int) (Math.random() * 2000 + 1000);
+            System.out.println(ANSI_RED + this.getName() + " exited the library" + ANSI_RESET);
             Thread.sleep(sleepTime);
             joinQueue();
+
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
