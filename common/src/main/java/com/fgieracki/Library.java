@@ -1,22 +1,28 @@
 package com.fgieracki;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.concurrent.Semaphore;
 
 @SuppressWarnings("java:S106")
 public class Library {
-    private int capacity;
-    private boolean isOpen = true;
-    public Semaphore semaphore;
-    private ArrayList<Person> peopleInside = new ArrayList<>();
+    private final int capacity;
+    private final Semaphore semaphore;
+    private final ArrayList<Person> peopleInside = new ArrayList<>();
+    boolean isOpen = false;
 
     Library(int capacity){
+        this.isOpen = true;
         this.capacity = capacity;
         semaphore = new Semaphore(capacity);
     }
 
+    public Semaphore semaphore(){
+        return semaphore;
+    }
+
+    public void close(){
+        isOpen = false;
+    }
     public boolean isOpen() {
         return isOpen;
     }

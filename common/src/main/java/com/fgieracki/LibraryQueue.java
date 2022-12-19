@@ -22,7 +22,6 @@ public class LibraryQueue {
         queue.poll();
     }
 
-
     public boolean isNotEmpty(){
         return !queue.isEmpty();
     }

@@ -1,15 +1,12 @@
 package com.fgieracki;
 
-import java.util.Objects;
-
 import static com.fgieracki.Colors.*;
 
-@SuppressWarnings("java:S106")
+@SuppressWarnings({"java:S106", "java:S2140"})
 abstract class Person extends Thread {
 
     abstract int getRequiredSlots();
     abstract String getType();
-
     private volatile boolean canEnter = false;
     private Library library;
     private LibraryQueue libraryQueue;
@@ -24,15 +21,15 @@ abstract class Person extends Thread {
         super.start();
     }
 
-    private void enterLibrary(){
+    protected void enterLibrary(){
         try {
-            library.semaphore.acquire(getRequiredSlots());
+            library.semaphore().acquire(getRequiredSlots());
             libraryQueue.getPersonFromQueue();
             library.addPerson(this);
             canEnter = false;
 
             System.out.println(ANSI_GREEN + this.getName() + " entered the library" + ANSI_RESET);
-            int sleepTime = (int) (Math.random() * 10000);
+            int sleepTime = (int) (Math.random() * 2000 + 1000);
             Thread.sleep(sleepTime);
             exitLibrary();
 
@@ -44,9 +41,9 @@ abstract class Person extends Thread {
     private void exitLibrary(){
         try {
             library.removePerson(this);
-            library.semaphore.release(getRequiredSlots());
+            library.semaphore().release(getRequiredSlots());
             System.out.println(ANSI_RED + this.getName() + " exited the library" + ANSI_RESET);
-            int sleepTime = (int) (Math.random() * 10000);
+            int sleepTime = (int) (Math.random() * 2000 + 1000);
             Thread.sleep(sleepTime);
             joinQueue();
         } catch (InterruptedException e) {
@@ -67,7 +64,7 @@ abstract class Person extends Thread {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("exception: Library is closed.");
         }
         super.run();
     }

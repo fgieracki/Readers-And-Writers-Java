@@ -9,12 +9,16 @@ public class App {
 
     int readers;
     int writers;
+    int operations = 0;
+    int maxOperations = 0;
 
-    App(int libraryCapacity, int readers, int writers){
+
+    App(int libraryCapacity, int readers, int writers, int maxOperations){
         library = new Library(libraryCapacity);
         libraryQueue = new LibraryQueue();
         this.readers = readers;
         this.writers = writers;
+        this.maxOperations = maxOperations;
 
         addPeopleToQueue();
     }
@@ -41,19 +45,18 @@ public class App {
     }
 
 
-    private void start(){
+    protected void start(){
         while(library.isOpen()){
             if(libraryQueue.isNotEmpty()){
                 try {
                 Person person = libraryQueue.checkNextPerson();
                 System.out.println(ANSI_YELLOW + person.getName() + " is first in the queue" + ANSI_RESET);
                 person.allowToEnter();
-
+                operations++;
                     sleep(1000);
                 } catch (Exception e) {
-//                    System.out.println(e);
                     Thread.currentThread().interrupt();
-//                    throw new RuntimeException(e);
+
                 }
             }
             else{
@@ -63,17 +66,21 @@ public class App {
                     sleep(1000);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
-//                    throw new RuntimeException(e);
                 }
-//                break;
+            }
+
+            if(operations == maxOperations){
+                library.close();
             }
         }
     }
 
 
     public static void main(String[] args) {
-        App app = new App(5, 5, 3);
+        App app = new App(5, 5, 1, -1);
         app.start();
     }
 
 }
+
+// mvn clean verify sonar:sonar -Dsonar.projectKey=ReaderWritersJava -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_db19b7be3811347a00756453cfe247eb6b0e771f
