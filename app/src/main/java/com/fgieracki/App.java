@@ -83,4 +83,3 @@ public class App {
 
 }
 
-// mvn clean verify sonar:sonar -Dsonar.projectKey=ReaderWritersJava -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_db19b7be3811347a00756453cfe247eb6b0e771f
