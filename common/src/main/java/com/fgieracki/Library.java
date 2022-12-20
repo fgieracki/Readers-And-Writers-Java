@@ -3,6 +3,14 @@ package com.fgieracki;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
+/**
+ * Represents a library
+ * Has a capacity defined in the constructor
+ * Has a semaphore to control the number of people in the library
+ * including the number of people who want to read and write
+ * Implements basic methods to control the library,
+ * mainly getters and setters
+ */
 @SuppressWarnings("java:S106")
 public class Library {
     private final int capacity;

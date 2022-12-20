@@ -2,6 +2,13 @@ package com.fgieracki;
 
 import static com.fgieracki.Colors.*;
 import static java.lang.Thread.sleep;
+
+
+/**
+ * Main class of the application
+ * Contains the main method
+ * Creates a new Library object and runs the simulation
+ */
 @SuppressWarnings("java:S106")
 public class App {
     Library library;
@@ -10,7 +17,7 @@ public class App {
     int readers;
     int writers;
     int operations = 0;
-    int maxOperations = 0;
+    int maxOperations;
 
 
     App(int libraryCapacity, int readers, int writers, int maxOperations){
@@ -31,7 +38,7 @@ public class App {
     private void addReadersToQueue(){
         for (int i = 0; i < readers; i++) {
             Reader reader = new Reader("Reader " + (i+1));
-            reader.start(library, libraryQueue);
+            reader.start(library);
             LibraryQueue.addPersonToQueue(reader);
         }
     }
@@ -39,7 +46,7 @@ public class App {
     private void addWritersToQueue(){
         for (int i = 0; i < writers; i++) {
             Writer writer = new Writer("Writer " + (i+1));
-            writer.start(library, libraryQueue);
+            writer.start(library);
             LibraryQueue.addPersonToQueue(writer);
         }
     }
@@ -82,5 +89,3 @@ public class App {
     }
 
 }
-
-// mvn clean verify sonar:sonar -Dsonar.projectKey=ReaderWritersJava -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_db19b7be3811347a00756453cfe247eb6b0e771f

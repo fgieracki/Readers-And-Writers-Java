@@ -5,6 +5,9 @@ import java.util.Queue;
 
 import static com.fgieracki.Colors.*;
 
+/**
+ * Represents a queue of people waiting to enter the library
+ */
 @SuppressWarnings("java:S106")
 public class LibraryQueue {
     private static final Queue<Person> queue = new LinkedList<>();
