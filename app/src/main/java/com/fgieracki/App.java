@@ -38,7 +38,7 @@ public class App {
     private void addReadersToQueue(){
         for (int i = 0; i < readers; i++) {
             Reader reader = new Reader("Reader " + (i+1));
-            reader.start(library);
+            reader.start(library, libraryQueue);
             LibraryQueue.addPersonToQueue(reader);
         }
     }
@@ -46,7 +46,7 @@ public class App {
     private void addWritersToQueue(){
         for (int i = 0; i < writers; i++) {
             Writer writer = new Writer("Writer " + (i+1));
-            writer.start(library);
+            writer.start(library, libraryQueue);
             LibraryQueue.addPersonToQueue(writer);
         }
     }

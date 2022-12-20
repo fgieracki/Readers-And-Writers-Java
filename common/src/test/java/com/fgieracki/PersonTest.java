@@ -21,7 +21,7 @@ public class PersonTest {
         Person person1 = new Reader("Test");
         Library library = new Library(1);
         LibraryQueue libraryQueue = new LibraryQueue();
-        person1.start(library);
+        person1.start(library, libraryQueue);
         person1.enterLibrary();
         assertFalse(library.isFull());
         assertTrue(libraryQueue.isNotEmpty());

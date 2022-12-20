@@ -15,6 +15,7 @@ abstract class Person extends Thread {
     abstract String getType();
     private volatile boolean canEnter = false;
     private Library library;
+    private LibraryQueue libraryQueue;
 
     /**
      *  This method is called to allow person to enter the library.
@@ -26,8 +27,9 @@ abstract class Person extends Thread {
     }
 
     /** This method is called to wake up the thread. */
-    public void start(Library library){
+    public void start(Library library, LibraryQueue libraryQueue){
         this.library = library;
+        this.libraryQueue = libraryQueue;
         super.start();
     }
 
@@ -39,6 +41,7 @@ abstract class Person extends Thread {
     protected void enterLibrary(){
         try {
             library.semaphore().acquire(getRequiredSlots());
+            libraryQueue.getPersonFromQueue();
             library.addPerson(this);
             canEnter = false;
 
