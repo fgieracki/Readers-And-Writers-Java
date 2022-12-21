@@ -14,7 +14,7 @@ public class LibraryQueue {
 
     public static void addPersonToQueue(Person person){
         queue.add(person);
-        System.out.println(ANSI_BLUE + person.getName() + " joined the queue" + ANSI_RESET);
+        System.out.println(ANSI_BLUE + person.getName() + " joined the queue, queue status: " + queue.size() +  ANSI_RESET);
     }
 
     public Person checkNextPerson(){
@@ -27,5 +27,9 @@ public class LibraryQueue {
 
     public boolean isNotEmpty(){
         return !queue.isEmpty();
+    }
+
+    public int size(){
+        return queue.size();
     }
 }

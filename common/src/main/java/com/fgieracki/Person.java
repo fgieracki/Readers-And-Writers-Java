@@ -45,7 +45,7 @@ abstract class Person extends Thread {
             library.addPerson(this);
             canEnter = false;
 
-            System.out.println(ANSI_GREEN + this.getName() + " entered the library" + ANSI_RESET);
+            System.out.println(ANSI_GREEN + this.getName() + " entered the library, queue status: " + libraryQueue.size() + ANSI_RESET);
             int sleepTime = (int) (Math.random() * 2000 + 1000);
             Thread.sleep(sleepTime);
             exitLibrary();
@@ -65,7 +65,7 @@ abstract class Person extends Thread {
             library.removePerson(this);
             library.semaphore().release(getRequiredSlots());
             int sleepTime = (int) (Math.random() * 2000 + 1000);
-            System.out.println(ANSI_RED + this.getName() + " exited the library" + ANSI_RESET);
+            System.out.println(ANSI_RED + this.getName() + " exited the library, queue status: " + libraryQueue.size() + ANSI_RESET);
             Thread.sleep(sleepTime);
             joinQueue();
 
